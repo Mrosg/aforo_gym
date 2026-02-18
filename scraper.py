@@ -1,3 +1,5 @@
+# Script para scrapear datos de aforo
+
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timezone, timedelta
