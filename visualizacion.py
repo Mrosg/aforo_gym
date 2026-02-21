@@ -11,14 +11,22 @@ df["hora"] = pd.to_datetime(df["hora"])
 df["personas"] = pd.to_numeric(df["personas"])
 df["porcentaje_num"] = df["porcentaje"].str.replace("%", "").astype(int)
 
-# --- Calcular la semana actual (lunes a viernes) ---
+# --- Calcular la semana actual (lunes a domingo) ---
 hoy = df["hora"].dt.date.max()
 hoy_dt = datetime.combine(hoy, datetime.min.time())
 lunes = hoy_dt - timedelta(days=hoy_dt.weekday())
 
 dias_semana = [lunes + timedelta(days=i) for i in range(7)]
 nombres_dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
-colores = ["#4C9BE8", "#E8774C", "#E8D44C", "#A04CE8", "#E84C8B", "#4CE8D4", "#E8A84C"]
+colores = [
+    "#1F77B4",  # azul
+    "#FF7F0E",  # naranja
+    "#2CA02C",  # verde
+    "#D62728",  # rojo
+    "#9467BD",  # morado
+    "#8C564B",  # marrón
+    "#E377C2"   # rosa
+]
 
 # --- Figura ---
 fig = go.Figure()
